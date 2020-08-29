@@ -19,6 +19,7 @@
 
 ### Association
   has_many :groups_users
+  has_many :comments
   has_many :users, through: :groups_users
 
 ## groups_usersテーブル
@@ -28,21 +29,21 @@
 |group_id|integer|null: false, foreign_key: true|
 
 ### Association
-- belong_to :group
-- belong_to :user
+- belongs_to :group
+- belongs_to :user
 
 
 ## commentsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|text|text|null: false|
+|text|text||
 |image|text||
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
 
 ### Association
-- belong_to :groups
-- belong_to :user
+- belongs_to :group
+- belongs_to :user
 
 
 This README would normally document whatever steps are necessary to get the
