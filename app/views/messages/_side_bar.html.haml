@@ -1,0 +1,20 @@
+.side_bar
+  .leftheader
+    .leftheader__list
+      %h3.leftheader__user-name
+        ユーザー
+      %ul.leftheader__iconlist
+        %li.leftheader__icon
+          = link_to '#' do 
+            = icon('fas', 'edit')
+        %li.leftheader__icon   
+          = link_to '#' do           
+            = icon('fas', 'cog')
+
+  .grouplist
+    .group
+      = link_to '#' do
+        .group__name
+        techchamp
+        .group__message
+        メッセージ
