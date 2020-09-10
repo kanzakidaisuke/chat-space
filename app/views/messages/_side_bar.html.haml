@@ -2,13 +2,13 @@
   .leftheader
     .leftheader__list
       %h3.leftheader__user-name
-        ユーザー
+        = current_user.name
       %ul.leftheader__iconlist
         %li.leftheader__icon
           = link_to '#' do 
             = icon('fas', 'edit')
         %li.leftheader__icon   
-          = link_to '#' do           
+          = link_to edit_user_path(current_user) do           
             = icon('fas', 'cog')
 
   .grouplist
