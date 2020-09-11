@@ -5,16 +5,18 @@
         = current_user.name
       %ul.leftheader__iconlist
         %li.leftheader__icon
-          = link_to '#' do 
+          = link_to new_group_path do 
             = icon('fas', 'edit')
         %li.leftheader__icon   
           = link_to edit_user_path(current_user) do           
             = icon('fas', 'cog')
 
   .grouplist
-    .group
-      = link_to '#' do
-        .group__name
-        techchamp
-        .group__message
-        メッセージ
+    - current_user.groups.each do |group|
+      .group
+        = link_to '#' do
+          .group__name
+            = group.name
+          .group__message
+            メッセージはまだありません
+
