@@ -2,29 +2,32 @@
   .rightheader
     .rightheader__group
       .rightheader__groupname
-        グループ名
+        = @group.name
       %ul.rightheader__memberlist
         member : 
         %li.rightheader__member
-          aa
-    = link_to '#',class: "rightheader__editbutton" do
+          - @group.users.each do |user|
+            = user.name
+    = link_to edit_group_path(@group), class: "rightheader__editbutton" do
       edit
+
   .message-list
-    .messagebox
-      .messageinfo
-        .messageinfo__username
-          dausuke
-        .messageinfo__date
-          2020年09月05日 02時07分
-      .message
-        %p.message__content
-          こんにちは
+    = render @messages
+    -# .messagebox
+    -#   .messageinfo
+    -#     .messageinfo__username
+    -#       dausuke
+    -#     .messageinfo__date
+    -#       2020年09月05日 02時07分
+    -#   .message
+    -#     %p.message__content
+    -#       こんにちは
   .footer 
-    %form.Form
+    = form_with model: [@group, @message], html: {class: "Form"}, local: true do |f|
       .Form__contents
-        %input.Form__inputContent{type: 'text', placeholder: 'type a message'}
-        %label.Form__inputimage
-          = icon('far','image', class: 'Form__icon')
-          %input.hidden{type: 'file'}
-      %input.Form__submit{type: 'submit', value: 'send'}
+        = f.text_field :content, class: 'Form__inputContent', placeholder: 'type a message'
+        = f.label :image, class: 'Form__inputimage' do
+          = icon('far', 'image', class: 'Form__icon')
+          = f.file_field :image, class: 'Hidden'
+      = f.submit 'Send', class: 'Form__submit'
             
