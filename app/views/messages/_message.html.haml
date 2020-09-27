@@ -1,4 +1,4 @@
-.messageBox
+.messageBox{data: {message: {id: message.id}}}
   .messageinfo
     .messageinfo__userName
       = message.user.name
@@ -9,3 +9,4 @@
       %p.message__content
         = message.content
     = image_tag message.image.url, class: 'Message__image' if message.image.present?
+    
